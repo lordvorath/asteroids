@@ -38,7 +38,7 @@ def main():
                 return
             for bul in shots:
                 if it.collides_with(bul):
-                    it.kill()
+                    it.split()
                     bul.kill()
 
         for x in drawable:
