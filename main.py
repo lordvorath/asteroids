@@ -23,7 +23,7 @@ def main():
     Player.containers = (updatable, drawable)
     player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
 
-    Shot.containers = (updatable, drawable)
+    Shot.containers = (updatable, drawable, shots)
 
     while True:
         for event in pygame.event.get():
@@ -36,6 +36,11 @@ def main():
             if it.collides_with(player):
                 print(f"Game over!")
                 return
+            for bul in shots:
+                if it.collides_with(bul):
+                    it.kill()
+                    bul.kill()
+
         for x in drawable:
             x.draw(screen)
         pygame.display.flip()
